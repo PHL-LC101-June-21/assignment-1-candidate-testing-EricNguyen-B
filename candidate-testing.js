@@ -40,7 +40,7 @@ function gradeQuiz(candidateAnswers) {
   
 
   for (let i=0; i < candidateAnswers.length; i++) {
-    if(candidateAnswers[i] == correctAnswers[i]) {
+    if( String(candidateAnswers[i]).toUpperCase() == String(correctAnswers[i]).toUpperCase() ) {
       //console.log(numberOfCorrectAnswers)
       numberOfCorrectAnswers += 1;
     }
