@@ -35,18 +35,38 @@ function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
 
-  let grade;
+  let grade  = 0;
+  let numberOfCorrectAnswers = 0;
+  
 
-  console.log(`Candidate Name: ${candidateName}`)
+  for (let i=0; i < candidateAnswers.length; i++) {
+    if(candidateAnswers[i] == correctAnswers[i]) {
+      //console.log(numberOfCorrectAnswers)
+      numberOfCorrectAnswers += 1;
+    }
+  }
+
+  grade = (numberOfCorrectAnswers/5) * 100;
+  
+  console.log(`\nCandidate Name: ${candidateName}`)
   for (let i = 0; i < candidateAnswers.length; i++){
       console.log(`${i+1}) ${questions[i]}`);
       console.log(`Your Answer: ${candidateAnswers[i]}`);
       console.log(`Correct Answer: ${correctAnswers[i]} \n`);
   }
+
+  console.log(`>>> Overall Grade: ${grade}% (${numberOfCorrectAnswers} of 5 responses correct) <<<`);
+  if(numberOfCorrectAnswers >= 4) {
+    console.log(`>>> Status: SUCCESS <<<`);
+  } else {
+    console.log(`>>> Status: FAILED <<<`);
+  }
   
 
   return grade;
 }
+
+
 
 function runProgram() {
   askForName();
